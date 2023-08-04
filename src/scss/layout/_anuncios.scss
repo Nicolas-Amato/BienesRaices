@@ -1,0 +1,40 @@
+@include tablet {
+    .contenedor-anuncio {
+        @include grid(3, 2rem);
+    }
+}
+.anuncio{
+    background-color: lighten($gris, 5);
+    border: 1px solid lighten($gris, 10);
+    
+
+    .precio{
+        color: $verde;
+        text-align: center;
+        font-size: 3rem;
+    }
+    
+    .contenido-anuncio{
+        text-align: center;
+        font-family: $bold;
+        padding: 2rem;       
+    }
+
+}
+.icono-caracteristicas{
+    display: flex;
+    list-style: none;
+    padding: 0;
+
+    li{
+       flex: 1;
+       display: flex;
+
+       img{
+        align-items: center;
+        flex: 0 0 5rem;
+        margin-right: 1rem;
+       }
+    }
+}
+

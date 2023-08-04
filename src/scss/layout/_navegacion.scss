@@ -1,0 +1,42 @@
+
+.barra {
+
+    .logo-header {
+        max-width: 100%;
+        width: 28rem;
+        height: auto;
+    }
+
+    display: flex;
+    flex-direction: column;
+    padding-top: 3rem;
+
+    @include tablet { 
+        flex-direction: row;
+        justify-content:space-between;        
+    }
+}
+
+.navegacion{
+    @include tablet{
+        display: flex;
+        align-items: center;
+    }
+
+    a{
+        color: $blanco;
+        text-decoration: none;
+        font-size: 1.8rem;
+        display: block;
+        text-align: center;
+        margin-right: 2rem;
+    }
+    
+    @include tablet{
+        margin-right: 2rem;
+
+        &:last-of-type{
+            margin: 0;
+        }
+    }
+}
