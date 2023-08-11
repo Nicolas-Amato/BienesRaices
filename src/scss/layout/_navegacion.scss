@@ -1,10 +1,29 @@
 .derecha{
+    
     display: flex;
+    flex-direction: column;
+    
+    @include tablet{
+        align-items: flex-end;
+    }
+
+    .dark-mode-boton{
+        width: 3rem;
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+        filter: invert(100%);
+
+        &:hover{
+            cursor: pointer;
+        }
+
+        @include tablet{
+            margin-bottom: 0remm;
+
+        }
+    }
 
 }
-
-
-
 
 .barra {
 
@@ -20,6 +39,8 @@
     padding-top: 3rem;
 
     @include tablet { 
+        
+        align-items: flex-end;
         flex-direction: row;
         justify-content:space-between;        
     }
