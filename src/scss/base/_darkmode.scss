@@ -8,8 +8,19 @@
     }
 
     .anuncio{
-        h3, p{
-            color: $negro;
+        background-color: $grisOscuro;
+        border: 1px solid $grisOscuro;
+        h3{
+            color: $gris;
+        }
+        .precio{
+            color: $verde;
+        }
+    }
+
+    .icono-caracteristicas{
+        img{
+            filter: invert(100%);
         }
     }
 }
