@@ -1,8 +1,6 @@
 <?php
-   include './includes/templates/header.php';
+   include './includes/template/header.php';
 ?>
-
-
 
     <main class="contenedor seccion contenido-centrado">
         <h1> guia para decorar tu casa con tu estilo</h1>
