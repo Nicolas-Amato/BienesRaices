@@ -1,4 +1,5 @@
 <?php
+   $inicio = true;
    include './includes/template/header.php';
 ?>
 

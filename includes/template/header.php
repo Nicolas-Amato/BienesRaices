@@ -10,10 +10,10 @@
 
 
 <body>
-    <header class="header inicio">
+    <header class="header <?php echo $inicio ? 'inicio' : ''; ?>">
         <div class="contenedor contenido-header">
             <div class="barra ">
-                <a class="logo-header" href="/">
+                <a class="logo-header" href="/bienesraices/index.php">
                     <img src="build/img/logo.svg" alt="logotipo Bienes Raices">
                 </a>
                 
@@ -32,8 +32,9 @@
                 </div>
             </div>        
 
-            
+            <?php 
+            if($inicio){ ?>
             <h1>Venta de Casas y Departamentos Exclusivos</h1> 
-        
+            <?php ?>        
         </div>
     </header>
