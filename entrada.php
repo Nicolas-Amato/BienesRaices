@@ -1,5 +1,8 @@
 <?php
-   include './includes/template/header.php';
+
+   require 'includes/funciones.php';   
+   incluirTemplate('header');
+   
 ?>
 
     <main class="contenedor seccion contenido-centrado">
@@ -30,18 +33,10 @@
     </main>
 
 
-    <footer class="footer seccion">
-        <div class="contenedor contenedor-footer">
-            <nav class="navegacion">
-                <a href="nosotros.html">Nosotros</a>
-                <a href="anuncios.html">Anuncios</a>
-                <a href="blog.html">Blog</a>
-                <a href="contacto.html">Contacto</a>
-            </nav>
-        </div>
-
-        <p class="copyright"> Derechos reservados para FitoA &copy</p>
-    </footer>
+    <?php
+        
+     incluirTemplate('footer');
+    ?>
 
 
     <script src="build/js/bundle.min.js"></script>

@@ -1,6 +1,8 @@
 <?php
-   $inicio = true;
-   include './includes/template/header.php';
+
+   require 'includes/funciones.php';   
+   incluirTemplate('header', $inicio = true);
+
 ?>
 
 
@@ -209,8 +211,8 @@
 
     </div>
 
-<?php
-   include './includes/template/footer.php';
+<?php   
+   incluirTemplate('footer');
 ?>
 
 
