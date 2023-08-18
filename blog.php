@@ -15,7 +15,7 @@
             </div>
 
             <div class="texto-entrada">
-                <a href="entrada.html">
+                <a href="entrada.php">
                     <h4>guia para decorar tu casa con tu estilo</h4>
                     <p> escrito por <span> 20/10/2023</span> por: <span>Admin</span></p>
                     <p>consejos para cosntriur una terrasa en el techo de tu casa, con los mejores materiales y ahorrando dinero</p>
@@ -32,7 +32,7 @@
             </div>
 
             <div class="texto-entrada">
-                <a href="entrada.html">
+                <a href="entrada.php">
                     <h4>guia para decorar tu casa con tu estilo</h4>
                     <p> escrito por <span> 20/10/2023</span> por: <span>Admin</span></p>
                     <p>consejos para cosntriur una terrasa en el techo de tu casa, con los mejores materiales y ahorrando dinero</p>
