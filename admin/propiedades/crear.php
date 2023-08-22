@@ -22,7 +22,10 @@
               <input type="text" id="precio" placeholder="nombre propiedad">
 
               <label for="imagen"> imagen </label>
-              <input type="file" id="imagen">
+              <input type="file" id="imagen" accept="image/jpg , image/png">
+
+              <label for="descripcion"> Descripcion </label>
+              <textarea id="descripcion" ></textarea>
 
             </fieldset>
             
