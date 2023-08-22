@@ -5,10 +5,9 @@
 
 
     <main class="contenedor seccion">
-        <h1> crear </h1>
+        <h1> delete </h1>
     </main>
-    
-    <a href="/admin" class="boton boton-verde-no-block">volver</a>
+
 
     <?php
         

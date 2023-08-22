@@ -14,14 +14,14 @@
         <div class="contenedor contenido-header">
             <div class="barra ">
                 <a class="logo-header" href="/bienesraices/index.php">
-                    <img src="build/img/logo.svg" alt="logotipo Bienes Raices">
+                    <img src="/bienesraices/build/img/logo.svg" alt="logotipo Bienes Raices">
                 </a>
                 
                 <div class="mobile-menu">
-                    <img src="build/img/barras.svg" alt="icono menu resposive">
+                    <img src="/bienesraices/build/img/barras.svg" alt="icono menu resposive">
                 </div>
                 <div class="derecha">
-                    <img class="dark-mode-boton" src="build/img/dark-mode.svg" alt="efecto-oscuro">
+                    <img class="dark-mode-boton" src="/bienesraices/build/img/dark-mode.svg" alt="efecto-oscuro">
 
                     <nav class="navegacion">
                         <a href="nosotros.php">Nosotros</a>
