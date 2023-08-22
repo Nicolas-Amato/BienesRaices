@@ -8,7 +8,7 @@
         <h1> crear </h1>
 
 
-        <a href="/admin/index.php" class="boton boton-verde-no-block">volver</a>
+        <a href="BienesRaices/admin/index.php" class="boton boton-verde-no-block">volver</a>
     </main>
 
 
