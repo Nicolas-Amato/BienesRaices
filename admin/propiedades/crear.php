@@ -6,9 +6,11 @@
 
     <main class="contenedor seccion">
         <h1> crear </h1>
+
+
+        <a href="/admin" class="boton boton-verde-no-block">volver</a>
     </main>
-    
-    <a href="/admin" class="boton boton-verde-no-block">volver</a>
+
 
     <?php
         
