@@ -1,9 +1,7 @@
-<?php
-
-   require 'includes/funciones.php';   
-   incluirTemplate('header');
-   
-?>
+    <?php
+     require 'includes/funciones.php';   
+     incluirTemplate('header');
+    ?>
 
     <main class="contenedor seccion contenido-centrado">
         <h1> guia para decorar tu casa con tu estilo</h1>
@@ -38,7 +36,5 @@
      incluirTemplate('footer');
     ?>
 
-
-    <script src="build/js/bundle.min.js"></script>
 </body>
 </html>

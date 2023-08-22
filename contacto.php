@@ -1,11 +1,7 @@
-<?php
-
-   require 'includes/funciones.php';   
-   incluirTemplate('header',$inicio = true);
-   
-?>
-
-
+    <?php
+     require 'includes/funciones.php';   
+     incluirTemplate('header');
+    ?>
 
     <main class="contenedor seccion ">
         <h1> Contacto </h1>
@@ -85,7 +81,6 @@
      incluirTemplate('footer');
     ?>
 
-
-    <script src="build/js/bundle.min.js"></script>
+    
 </body>
 </html>
