@@ -34,13 +34,13 @@
               <legend>Informacion Propiedad</legend>
 
               <label for="habitaciones">habitaciones</label>
-              <input type="text" id="habitaciones" placeholder="cantidad de habitaciones" min="1" max="9">
+              <input type="number" id="habitaciones" placeholder="cantidad de habitaciones" min="1" max="9">
  
               <label for="baños">baños</label>
-              <input type="text" id="baños" placeholder="cantidad de baños" min="1" max="9">
+              <input type="number" id="baños" placeholder="cantidad de baños" min="1" max="9">
               
               <label for="estacionamiento">estacionamiento</label>
-              <input type="text" id="estacionamiento" placeholder="cantidad de coches">
+              <input type="number" id="estacionamiento" placeholder="cantidad de coches">
        
              </fieldset>
 
