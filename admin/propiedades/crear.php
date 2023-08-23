@@ -29,11 +29,33 @@
 
             </fieldset>
             
+            <fieldset>
 
+              <legend>Informacion Propiedad</legend>
 
+              <label for="habitaciones">habitaciones</label>
+              <input type="text" id="habitaciones" placeholder="cantidad de habitaciones" min="1" max="9">
+ 
+              <label for="baños">baños</label>
+              <input type="text" id="baños" placeholder="cantidad de baños" min="1" max="9">
+              
+              <label for="estacionamiento">estacionamiento</label>
+              <input type="text" id="estacionamiento" placeholder="cantidad de coches">
+       
+             </fieldset>
 
+             <fieldset>
+                <legend>Informacion Vendedor</legend>
+                <select>
+                    <option value="1">Juan</option>
+                    <option value="2">Mara</option>
+                </select>
 
+             </fieldset>
+             
         </form>
+
+        <input type="submit" value="crear propiedad" class="boton boton-verde-no-block">
     </main>
 
 
