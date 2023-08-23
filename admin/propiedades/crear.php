@@ -1,15 +1,16 @@
 <?php
+
+    //base de datos
+     require '../../includes/config/database.php';
+     conectar_DB();
+
      require '../../includes/funciones.php';   
      incluirTemplate('header');
-    ?>
+?>
 
 
     <main class="contenedor seccion">
         <h1> crear </h1>
-
-
-        <a href="/bienesRaices/admin/index.php" class="boton boton-verde-no-block">volver</a>
-
 
         <form class="formulario">
             <fieldset>
@@ -47,7 +48,7 @@
              <fieldset>
                 <legend>Informacion Vendedor</legend>
                 <select>
-                    <option value="1">Juan</option>
+                    <option value="1">rodolfo</option>
                     <option value="2">Mara</option>
                 </select>
 
@@ -56,6 +57,7 @@
         </form>
 
         <input type="submit" value="crear propiedad" class="boton boton-verde-no-block">
+        <a href="/bienesRaices/admin/index.php" class="boton boton-verde-no-block">volver</a>
     </main>
 
 
