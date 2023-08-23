@@ -2,13 +2,14 @@
 
 function conectar_DB(){
 
-    $DB = mysqli_connect('localhost', 'root', 'shaggo05', 'BD_bienesraices');
+    $DB = mysqli_connect('localhost', 'root', 'shaggo05', 'bienesraices_CRUD');
 
-    if($DB){
-        echo "se conecto";
-    }else {
+    if(!$DB){
         echo "no se conecto";
+        exit;
     }
+
+    return $DB;
 }
 
 ?>
