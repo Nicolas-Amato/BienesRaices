@@ -1,6 +1,6 @@
 <?php
 
-function conectar_DB() {
+function conectar_DB(){
 
     $DB = mysqli_connect('localhost', 'root', 'shaggo05', 'BD_bienesraices');
 
@@ -10,3 +10,5 @@ function conectar_DB() {
         echo "no se conecto";
     }
 }
+
+?>

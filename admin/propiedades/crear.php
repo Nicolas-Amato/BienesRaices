@@ -1,13 +1,13 @@
 <?php
+//base de datos
+require '../../includes/config/database.php';
+conectar_DB();
 
-    //base de datos
-     require '../../includes/config/database.php';
-     conectar_DB();
+require '../../includes/funciones.php';   
+incluirTemplate('header');
 
-     require '../../includes/funciones.php';   
-     incluirTemplate('header');
+        
 ?>
-
 
     <main class="contenedor seccion">
         <h1> crear </h1>
