@@ -3,7 +3,10 @@
 require '../../includes/config/database.php';
 $DB = conectar_DB();
 
-var_dump($DB);
+    echo "<pre>";
+    var_dump($_SERVER);
+    echo "</pre>";
+
 
 require '../../includes/funciones.php';   
 incluirTemplate('header');
@@ -18,7 +21,7 @@ incluirTemplate('header');
         <a href="/bienesRaices/admin/index.php" class="boton boton-verde-no-block">volver</a>
 
 
-        <form class="formulario" method="POST" action="/admin/propiedades/crear.php">
+        <form class="formulario" method="POST" action="BienesRaices/admin/propiedades/crear.php ">
             <fieldset>
               <legend> Informacion General </legend>
 
@@ -26,7 +29,7 @@ incluirTemplate('header');
               <input type="text" id="titulo" name='titulo' placeholder="nombre propiedad">
 
               <label for="precio"> Precio: </label>
-              <input type="text" id="precio" name='precio' placeholder="nombre propiedad">
+              <input type="NUMBER" id="precio" name='precio' placeholder="preciod propiedad">
 
               <label for="imagen"> imagen </label>
               <input type="file" id="imagen" name='imagen' accept="image/jpg , image/png">
