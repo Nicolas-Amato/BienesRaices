@@ -7,7 +7,7 @@
     <main class="contenedor seccion">
         <h1> Administrador </h1>
 
-        <a href="/BienesRaices/admin/propiedades/crear.php" class="boton boton-verde-no-block"> Nueva Propiedad </a>
+        <a href="/bienesraices/admin/propiedades/crear.php" class="boton boton-verde-no-block"> Nueva Propiedad </a>
     </main>
 
 

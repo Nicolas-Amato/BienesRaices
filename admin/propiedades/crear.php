@@ -3,29 +3,29 @@
   require '../../includes/config/database.php';
   $DB = conectar_DB();
 
-  if($_SERVER['REQUEST_METHOD'] === 'POST'){
-
+  
+  if($_SERVER['REQUEST_METHOD']  === 'POST' ) {
     echo "<pre>";
     var_dump($_POST);
     echo "</pre>";
 
     $titulo = $_POST['titulo'];
     $precio = $_POST['precio'];
-    $descripcion = $_POST['desdripcion'];
+    $descripcion = $_POST['descripcion'];
     $habitaciones = $_POST['habitaciones'];
-    $WC = $_POST['WC'];
+    $wc = $_POST['wc'];
     $estacionamiento = $_POST['estacionamiento'];
-    $vendedor = $_POST['vendedor'];
+    $vendedores_Id = $_POST['vendedor'];
 
-    $query = " INSERT INTO propiedades (titulo, precio, descripcion,
-      habitaciones, WC, estacionamiento, vendedor) VALUES (
-      '$titulo', '$precio', '$descripcion', '$habitaciones',
-      '$WC', '$estacionamiento', '$vendedor') ";
-      
-   // echo $query;
+    $query = " INSERT INTO propiedades (titulo, precio, descripción,
+    habitaciones, wc, estacionamiento, vendedores_Id) VALUES (
+    '$titulo', '$precio', '$descripcion', '$habitaciones',
+    '$wc', '$estacionamiento', '$vendedores_Id') ";
+    
+    // echo $query;
 
-
-  }
+    mysqli_query($db, $query);
+}
   
   require '../../includes/funciones.php';   
   incluirTemplate('header');
@@ -40,7 +40,7 @@
         <a href="/bienesRaices/admin/index.php" class="boton boton-verde-no-block">volver</a>
 
 
-        <form class="formulario" method="POST" action="/admin/propiedades/crear.php">
+        <form class="formulario" method="POST" action="/bienesraices/admin/propiedades/crear.php">
             <fieldset>
               <legend> Informacion General </legend>
 
@@ -75,16 +75,18 @@
 
             <fieldset>
               <legend>Informacion Vendedor</legend>
-               <select name="vendedor">
+               <select name="vendedor_ID">
                    <option value="1">rodolfo</option>
                    <option value="2">Mara</option>
                </select>
 
             </fieldset>
              
+
+            <input type="submit" value='crear propiedad' class="boton boton-verde-no-block">
         </form>
 
-        <input type="submit" value="crear propiedad" class="boton boton-verde-no-block">
+            
         
     </main>
 
