@@ -3,42 +3,14 @@
   require '../../includes/config/database.php';
   $DB = conectar_DB();
 
-  
-  echo "<pre>";
-  var_dump($_SERVER);
-  echo "</pre>";
 
   if($_SERVER['REQUEST_METHOD'] === 'POST'){
-
     echo "<pre>";
     var_dump($_POST);
     echo "</pre>";
-
-    $titulo = $_POST['titulo'];
-    $precio = $_POST['precio'];
-    $descripcion = $_POST['desdripcion'];
-    $habitaciones = $_POST['habitaciones'];
-    $baños = $_POST['baños'];
-    $estacionamiento = $_POST['estacionamiento'];
-    $vendedor = $_POST['vendedor'];
-
-    $query = " INSERT INTO propiedades (titulo, precio, descripcion,
-      habitaciones, baños, estacionamiento, vendedor) VALUES (
-      '$titulo', '$precio', '$descripcion', '$habitaciones',
-      '$baño', '$estacionamiento', '$vendedor') ";
-      
-   // echo $query;
-
-    $resultadoBD = mysqli_query($DB, $query);
-
-    if($resultadoBD){
-     echo'se inserto correctamente';
-    }else{
-     echo 'no se inserto correctamente';
-    }
-
-  }
-  
+   }
+    
+    
   require '../../includes/funciones.php';   
   incluirTemplate('header');
 
@@ -49,7 +21,8 @@
         <h1> Generar Publicacion Propiedad </h1>
 
 
-        <a href="/bienesRaices/admin/index.php" class="boton boton-verde-no-block">volver</a>
+        <a href="/admin" class="boton boton-verde-no-block">volver</a>
+        <input type="submit" value="crear propiedad" class="boton boton-verde-no-block">
 
 
         <form class="formulario" method="POST" action="/bienesRaices/admin/propiedades/crear.php">
@@ -75,13 +48,13 @@
               <legend>Informacion Propiedad</legend>
 
               <label for="habitaciones">habitaciones</label>
-              <input type="number" id="habitaciones" name='habitaciones 'laceholder="cantidad de habitaciones" min="1" max="9">
+              <input type="number" id="habitaciones" name='habitaciones' laceholder="cantidad de habitaciones" min="1" max="9">
  
-              <label for="baños">baños</label>
-              <input type="number" id="baños" nema='baños 'placeholder="cantidad de baños" min="1" max="9">
+              <label for="WC">baños</label>
+              <input type="number" id="WC" name='WC' placeholder="cantidad de baños" min="1" max="9">
               
               <label for="estacionamiento">estacionamiento</label>
-              <input type="number" id="estacionamiento" name='estacionamiento 'placeholder="cantidad de coches">
+              <input type="number" id="estacionamiento" name='estacionamiento' placeholder="cantidad de coches" min="1" max="9">
        
             </fieldset>
 
@@ -96,7 +69,7 @@
              
         </form>
 
-        <input type="submit" value="crear propiedad" class="boton boton-verde-no-block">
+        
         
     </main>
 
