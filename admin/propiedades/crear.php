@@ -21,7 +21,7 @@
         <h1> Generar Publicacion Propiedad </h1>
 
 
-        <a href="/admin" class="boton boton-verde-no-block">volver</a>
+        <a href="/admin/index.php" class="boton boton-verde-no-block">volver</a>
         <input type="submit" value="crear propiedad" class="boton boton-verde-no-block">
 
 
