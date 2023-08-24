@@ -10,12 +10,20 @@
 
       $titulo = $_POST['titulo'];
       $precio = $_POST['precio'];
-      $imagen = $_POST['imagen'];
       $descripcion = $_POST['desdripcion'];
       $habitaciones = $_POST['habitaciones'];
       $baños = $_POST['baños'];
       $estacionamiento = $_POST['estacionamiento'];
       $vendedor = $_POST['vendedor'];
+
+      $query = " INSERT INTO propiedades (titulo, precio, descripcion,
+        habitaciones, baños, estacionamiento, vendedor) VALUES (
+        '$titulo', '$precio', '$descripcion', '$habitaciones',
+        '$baño', '$estacionamiento', '$vendedor') ";
+        
+     // echo $query;
+ 
+       mysqli_query($db, $query);
 
     }
 
