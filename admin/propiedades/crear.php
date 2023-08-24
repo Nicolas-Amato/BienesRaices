@@ -41,7 +41,7 @@
         <a href="/bienesRaices/admin/index.php" class="boton boton-verde-no-block">volver</a>
 
 
-        <form class="formulario" method="POST" action="/admin/propiedades/crear.php">
+        <form class="formulario" method="POST" action="/bienesRaices/admin/propiedades/crear.php">
             <fieldset>
               <legend> Informacion General </legend>
 
