@@ -3,14 +3,30 @@
   require '../../includes/config/database.php';
   $DB = conectar_DB();
 
-
   if($_SERVER['REQUEST_METHOD'] === 'POST'){
+
     echo "<pre>";
     var_dump($_POST);
     echo "</pre>";
-   }
-    
-    
+
+    $titulo = $_POST['titulo'];
+    $precio = $_POST['precio'];
+    $descripcion = $_POST['desdripcion'];
+    $habitaciones = $_POST['habitaciones'];
+    $WC = $_POST['WC'];
+    $estacionamiento = $_POST['estacionamiento'];
+    $vendedor = $_POST['vendedor'];
+
+    $query = " INSERT INTO propiedades (titulo, precio, descripcion,
+      habitaciones, WC, estacionamiento, vendedor) VALUES (
+      '$titulo', '$precio', '$descripcion', '$habitaciones',
+      '$WC', '$estacionamiento', '$vendedor') ";
+      
+   // echo $query;
+
+
+  }
+  
   require '../../includes/funciones.php';   
   incluirTemplate('header');
 
@@ -21,8 +37,7 @@
         <h1> Generar Publicacion Propiedad </h1>
 
 
-        <a href="/admin/index.php" class="boton boton-verde-no-block">volver</a>
-        <input type="submit" value="crear propiedad" class="boton boton-verde-no-block">
+        <a href="/bienesRaices/admin/index.php" class="boton boton-verde-no-block">volver</a>
 
 
         <form class="formulario" method="POST" action="/bienesRaices/admin/propiedades/crear.php">
@@ -69,7 +84,7 @@
              
         </form>
 
-        
+        <input type="submit" value="crear propiedad" class="boton boton-verde-no-block">
         
     </main>
 
