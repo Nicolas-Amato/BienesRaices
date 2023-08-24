@@ -2,32 +2,43 @@
   //base de datos
   require '../../includes/config/database.php';
   $DB = conectar_DB();
-    
+
+  
+  echo "<pre>";
+  var_dump($_SERVER);
+  echo "</pre>";
+
   if($_SERVER['REQUEST_METHOD'] === 'POST'){
-      echo "<pre>";
-      var_dump($_POST);
-      echo "</pre>";
 
-      $titulo = $_POST['titulo'];
-      $precio = $_POST['precio'];
-      $descripcion = $_POST['desdripcion'];
-      $habitaciones = $_POST['habitaciones'];
-      $baños = $_POST['baños'];
-      $estacionamiento = $_POST['estacionamiento'];
-      $vendedor = $_POST['vendedor'];
+    echo "<pre>";
+    var_dump($_POST);
+    echo "</pre>";
 
-      $query = " INSERT INTO propiedades (titulo, precio, descripcion,
-        habitaciones, baños, estacionamiento, vendedor) VALUES (
-        '$titulo', '$precio', '$descripcion', '$habitaciones',
-        '$baño', '$estacionamiento', '$vendedor') ";
-        
-     // echo $query;
- 
-       mysqli_query($db, $query);
+    $titulo = $_POST['titulo'];
+    $precio = $_POST['precio'];
+    $descripcion = $_POST['desdripcion'];
+    $habitaciones = $_POST['habitaciones'];
+    $baños = $_POST['baños'];
+    $estacionamiento = $_POST['estacionamiento'];
+    $vendedor = $_POST['vendedor'];
 
+    $query = " INSERT INTO propiedades (titulo, precio, descripcion,
+      habitaciones, baños, estacionamiento, vendedor) VALUES (
+      '$titulo', '$precio', '$descripcion', '$habitaciones',
+      '$baño', '$estacionamiento', '$vendedor') ";
+      
+   // echo $query;
+
+    $resultadoBD = mysqli_query($DB, $query);
+
+    if($resultadoBD){
+     echo'se inserto correctamente';
+    }else{
+     echo 'no se inserto correctamente';
     }
 
-
+  }
+  
   require '../../includes/funciones.php';   
   incluirTemplate('header');
 
