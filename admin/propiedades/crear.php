@@ -13,18 +13,19 @@
     $precio = $_POST['precio'];
     $descripcion = $_POST['descripcion'];
     $habitaciones = $_POST['habitaciones'];
-    $wc = $_POST['wc'];
+    $WC= $_POST['WC'];
     $estacionamiento = $_POST['estacionamiento'];
-    $vendedores_Id = $_POST['vendedor'];
+    $vendedor_ID = $_POST['vendedor_ID'];
 
-    $query = " INSERT INTO propiedades (titulo, precio, descripción,
-    habitaciones, wc, estacionamiento, vendedores_Id) VALUES (
+    //INSERTANDO EN BASE DE DATOS
+
+    $query = " INSERT INTO propiedades (titulo, precio, descripcion,
+    habitaciones, WC, estacionamiento, vendedores_ID) VALUES (
     '$titulo', '$precio', '$descripcion', '$habitaciones',
-    '$wc', '$estacionamiento', '$vendedores_Id') ";
+    '$WC', '$estacionamiento', '$vendedor_ID') ";
     
-    // echo $query;
 
-    mysqli_query($db, $query);
+    echo($query);
 }
   
   require '../../includes/funciones.php';   
@@ -53,7 +54,7 @@
               <label for="imagen"> imagen </label>
               <input type="file" id="imagen" name='imagen' accept="image/jpg , image/png">
 
-              <label for="descripcion"> Descripcion </label>
+              <label for="descripcion"> descripcion </label>
               <textarea id="descripcion" name="descripcion" ></textarea>
 
             </fieldset>
