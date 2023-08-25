@@ -65,8 +65,7 @@
          <div class="alerta error">
           <?php echo $error; ?>
          </div>
-        <?php endforeach; ?>
-      
+      <?php endforeach; ?>
 
 
         <form class="formulario" method="POST" action="/bienesraices/admin/propiedades/crear.php">
