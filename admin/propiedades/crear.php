@@ -5,9 +5,8 @@
 
   
   if($_SERVER['REQUEST_METHOD']  === 'POST' ) {
-    echo "<pre>";
-    var_dump($_POST);
-    echo "</pre>";
+
+    $errores = [];
 
     $titulo = $_POST['titulo'];
     $precio = $_POST['precio'];
@@ -17,21 +16,38 @@
     $estacionamiento = $_POST['estacionamiento'];
     $vendedor_ID = $_POST['vendedor_ID'];
 
-    //INSERTANDO EN BASE DE DATOS
 
-    $query = " INSERT INTO propiedades (titulo, precio, descipcion,
-    habitaciones, WC, estacionamiento, vendedores_ID) VALUES (
-    '$titulo', '$precio', '$descipcion', '$habitaciones',
-    '$WC', '$estacionamiento', '$vendedor_ID') ";
+
+    //vereficando completado de campos
+
+    if(!$titulo){$errores[] = 'la Titulo es OBLIGATORIA';}
+    if(!$precio){$errores[] = 'el precio es OBLIGATORIA';}
+    if(strlen ($descipcion) < 50){$errores[] = 'la Descripcion es OBLIGATORIA';}
+    if(!$habitaciones){$errores[] = 'la cantidad de habitaciones es OBLIGATORIA';}
+    if(!$WC){$errores[] = 'la cantidad de baños es OBLIGATORIA';}
+    if(!$estacionamiento){$errores[] = 'la cantidad OBLIGATORIA';}
+    if(!$vendedor_ID){$errores[] = 'elige un vendedor';}
+    
+    //verificandi validacion
+
+    if(empty($errores)){
+      //INSERTANDO EN BASE DE DATOS
+
+      $query = " INSERT INTO propiedades (titulo, precio, descipcion,
+      habitaciones, WC, estacionamiento, vendedores_ID) VALUES (
+     '$titulo', '$precio', '$descipcion', '$habitaciones',
+     '$WC', '$estacionamiento', '$vendedor_ID') ";
     
 
-    //echo($query);
-    $resultadoBD = mysqli_query($DB, $query);
+     //echo($query);
+     $resultadoBD = mysqli_query($DB, $query);
 
-    if($resultadoBD){
+      if($resultadoBD){
         echo 'insertado correctamente';
-    }
-}
+      }
+
+    }    
+} 
   
   require '../../includes/funciones.php';   
   incluirTemplate('header');
@@ -44,6 +60,13 @@
 
 
         <a href="/bienesRaices/admin/index.php" class="boton boton-verde-no-block">volver</a>
+
+        <?php foreach($errores as $error):?>
+         <div class="alerta error">
+          <?php echo $error; ?>
+         </div>
+        <?php endforeach; ?>
+      
 
 
         <form class="formulario" method="POST" action="/bienesraices/admin/propiedades/crear.php">
