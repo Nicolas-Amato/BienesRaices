@@ -1,4 +1,9 @@
-.alerta {
-    background-color: $rojo;
-    color: $blanco;
+.alerta{
+    padding: .5rem;
+    text-align: center;
+
+    &.error{
+        background-color: $rojo;
+
+    }
 }
