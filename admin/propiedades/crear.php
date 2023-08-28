@@ -23,6 +23,7 @@
     $WC= $_POST['WC'];
     $estacionamiento = $_POST['estacionamiento'];
     $vendedor_ID = $_POST['vendedor_ID'];
+    $publicado = date('y/m/d');
 
 
 
@@ -42,9 +43,9 @@
       //INSERTANDO EN BASE DE DATOS
 
       $query = " INSERT INTO propiedades (titulo, precio, descipcion,
-      habitaciones, WC, estacionamiento, vendedores_ID) VALUES (
+      habitaciones, WC, estacionamiento, publicado, vendedores_ID) VALUES (
      '$titulo', '$precio', '$descipcion', '$habitaciones',
-     '$WC', '$estacionamiento', '$vendedor_ID') ";
+     '$WC', '$estacionamiento','$publicado', '$vendedor_ID') ";
     
 
      //echo($query);
@@ -69,7 +70,7 @@
 
         <a href="/bienesRaices/admin/index.php" class="boton boton-verde-no-block">volver</a>
 
-       <?php foreach($errores as $error): ?>
+       <?php foreach ($errores as $error) : ?>
        <div class="alerta error">
         <?php echo $error; ?>
        </div>
@@ -99,7 +100,7 @@
               <legend>Informacion Propiedad</legend>
 
               <label for="habitaciones">habitaciones</label>
-              <input type="number" id="habitaciones" name='habitaciones' laceholder="cantidad de habitaciones" min="1" max="9" value="<?php echo $habitaciones; ?>">
+              <input type="number" id="habitaciones" name='habitaciones' placeholder="cantidad de habitaciones" min="1" max="9" value="<?php echo $habitaciones; ?>">
  
               <label for="WC">baños</label>
               <input type="number" id="WC" name='WC' placeholder="cantidad de baños" min="1" max="9" value="<?php echo $WC;?>">
@@ -112,8 +113,9 @@
             <fieldset>
               <legend>Informacion Vendedor</legend>
                <select name="vendedor_ID">
-                   <option value="1">rodolfo</option>
-                   <option value="2">Mara</option>
+                  <option value=''>--seleccione--</option>
+                  <option value="1">rodolfo</option>
+                  <option value="2">Mara</option>
                </select>
 
             </fieldset>
