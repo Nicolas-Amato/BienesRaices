@@ -116,7 +116,7 @@
             <fieldset>
               <legend>Informacion Vendedor</legend>
                <select name="vendedor_ID">
-                  <option value=''>--seleccione--</option>
+                  <option value="">--seleccione--</option>
                   <?php while ($row = mysqli_fetch_assoc($consultaVendedor_BD) ) :?>
                    <option value="<?php echo $row['id']?>" > <?php echo $row['nombre'] ." ". $row['apellido']; ?> </option>
                   <?php endwhile; ?>
