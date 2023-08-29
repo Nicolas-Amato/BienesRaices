@@ -11,6 +11,7 @@
     $WC= '';
     $estacionamiento = '';
     $vendedor_ID = '';
+    $publicacion = '';
   
   if($_SERVER['REQUEST_METHOD']  === 'POST' ) {
 
@@ -67,13 +68,16 @@
         
 ?>
 
+
     <main class="contenedor seccion">
         <h1> Generar Publicacion Propiedad </h1>
 
 
         <a href="/bienesRaices/admin/index.php" class="boton boton-verde-no-block">volver</a>
 
-       <?php foreach($errores as $error) : ?>
+       <?php
+       $errores = [''];
+       foreach($errores as $error) : ?>
        <div class="alerta error">
         <?php $error; ?>
        </div>
@@ -118,14 +122,14 @@
                <select name="vendedor_ID">
                   <option value="">--seleccione--</option>
                   <?php while ($vendedor = mysqli_fetch_assoc($resultado) ) :?>
-                   <option value="<?php echo $vendedor['id']?>" > <?php echo $vendedor['nombre'] ." ". $vendedor['apellido']; ?> </option>
+                   <option <?php echo $vendedor_ID === $vendedor['id'] ? 'select': ''; ?> value="<?php echo $vendedor['id']?>"> <?php echo $vendedor['nombre'] ." ". $vendedor['apellido']; ?> </option>
                   <?php endwhile; ?>
                </select>
 
             </fieldset>
              
 
-            <input type="submit" value='crear propiedad' class="boton boton-verde-no-block">
+          <input type="submit" value='crear propiedad' class="boton boton-verde-no-block">
         </form>
 
             
