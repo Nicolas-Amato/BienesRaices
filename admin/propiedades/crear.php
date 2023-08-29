@@ -25,6 +25,13 @@
     $vendedor_ID = $_POST['vendedor_ID'];
     $publicado = date('y/m/d');
 
+    //Consultar vendedores
+
+    $consulta_ven = "SELECT * FROM $vendedores";
+    
+    $consultaVendedor_BD = mysqli_query($DB, $vendedor_BD);
+
+
 
 
     //vereficando completado de campos
@@ -114,8 +121,9 @@
               <legend>Informacion Vendedor</legend>
                <select name="vendedor_ID">
                   <option value=''>--seleccione--</option>
-                  <option value="1">rodolfo</option>
-                  <option value="2">Mara</option>
+                  <?php while ($vendedores = mysqli_fetch_assoc($consultaVendedor_BD)):?>
+                    <option value="ID"><?php echo $vendedores['nombre'].[''].$vendedores['apellido'] ?></option>
+                  <?php endwhile;?>
                </select>
 
             </fieldset>
