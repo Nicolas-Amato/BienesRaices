@@ -27,8 +27,8 @@
 
     //Consultar vendedores
 
-    $consulta_ven = "SELECT * FROM vendedores";
-    $resultado = mysqli_query($DB, $consulta_ven);
+    $consulta = "SELECT * FROM vendedores";
+    $resultado = mysqli_query($DB, $consulta);
 
     //vereficando completado de campos
 
@@ -73,9 +73,9 @@
 
         <a href="/bienesRaices/admin/index.php" class="boton boton-verde-no-block">volver</a>
 
-       <?php foreach ($errores as $error) : ?>
+       <?php foreach($errores as $error) : ?>
        <div class="alerta error">
-        <?php echo $error; ?>
+        <?php $error; ?>
        </div>
        <?php endforeach; ?>
 
@@ -117,8 +117,8 @@
               <legend>Informacion Vendedor</legend>
                <select name="vendedor_ID">
                   <option value="">--seleccione--</option>
-                  <?php while ($row = mysqli_fetch_assoc($resultado) ) :?>
-                   <option value="<?php echo $row['id']?>" > <?php echo $row['nombre'] ." ". $row['apellido']; ?> </option>
+                  <?php while ($vendedor = mysqli_fetch_assoc($resultado) ) :?>
+                   <option value="<?php echo $vendedor['id']?>" > <?php echo $vendedor['nombre'] ." ". $vendedor['apellido']; ?> </option>
                   <?php endwhile; ?>
                </select>
 
