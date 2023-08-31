@@ -60,18 +60,20 @@
       //ingresando  a BD
      $carpetaIMG = '../../imagen';
 
-     if(!is_dir($carpetaIMG)){mkdir($carpetaIMG);}
-
+     if(!is_dir($carpetaIMG)){mkdir($carpetaIMG);     }
      if(move_uploaded_file($imagen['tmp_name'], $carpetaIMG . "/archivo.jpg")){
       chmod($carpetaIMG,0777);
       echo "subido correctamente";
      } else{
       $error = $_FILES["imagen"]["error"];
      }
-
-
+     exit;
 
      //subir imagen a BD
+
+     
+
+
       $query = " INSERT INTO propiedades (titulo, precio, descipcion,
       habitaciones, WC, estacionamiento, publicado, vendedores_ID, imagen) VALUES (
      '$titulo', '$precio', '$descipcion', '$habitaciones',
