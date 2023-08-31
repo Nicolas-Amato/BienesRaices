@@ -8,10 +8,6 @@
    $consulta = "SELECT * FROM vendedores";
    $consultaV = mysqli_query($DB, $consulta);
 
-
-    if($consultaV){
-     echo "conexcion exitosa con vendedores.id";
-    }
 // variable para mortrar errores
     $errores = [];
 
@@ -26,8 +22,6 @@
   
   if($_SERVER['REQUEST_METHOD']  === 'POST' ) {
 
-    $errores = [];
-
     $titulo = mysqli_real_escape_string( $DB, $_POST['titulo']);
     $precio = mysqli_real_escape_string( $DB, $_POST['precio']);
     $descipcion = mysqli_real_escape_string( $DB, $_POST['descipcion']);
@@ -36,7 +30,7 @@
     $estacionamiento = mysqli_real_escape_string( $DB, $_POST['estacionamiento']);
     $vendedor_ID = mysqli_real_escape_string( $DB, $_POST['vendedor_ID']);
     $publicado = date('y/m/d');
- 
+    $imagen = $_FILES['imagen'];
     //vereficando completado de campos
 
     if(!$titulo){$errores[] = 'la Titulo es OBLIGATORIA';}
@@ -46,6 +40,17 @@
     if(!$WC){$errores[] = 'la cantidad de baños es OBLIGATORIA';}
     if(!$estacionamiento){$errores[] = 'la cantidad OBLIGATORIA';}
     if(!$vendedor_ID){$errores[] = 'elige un vendedor';}
+    //validando img o files
+    if(!$imagen['name'] || $imagen['error']){
+      $errores[] = 'la imagen es OBLIGATORIA';
+    }
+    //validando tamaño archivo
+
+    $medida = 1000 * 1000;
+
+    if(!$imagen['size'] > $medida ){
+      $errores [] = 'el tamaño es demasiado GRANDE';
+    }
     
     //verificandi validacion
 
@@ -53,10 +58,21 @@
       //INSERTANDO EN BASE DE DATOS
 
       $query = " INSERT INTO propiedades (titulo, precio, descipcion,
-      habitaciones, WC, estacionamiento, publicado, vendedores_ID) VALUES (
+      habitaciones, WC, estacionamiento, publicado, vendedores_ID, imagen) VALUES (
      '$titulo', '$precio', '$descipcion', '$habitaciones',
-     '$WC', '$estacionamiento','$publicado', '$vendedor_ID') ";
-    
+     '$WC', '$estacionamiento','$publicado', '$vendedor_ID', '$imagen') ";
+     
+     //ingresando  a BD
+     $carpetaIMG = '../../imagen';
+
+     if(!is_dir($carpetaIMG)){
+      mkdir($carpetaIMG);
+     }
+
+     //subir imagen a BD
+
+     move_uploaded_file($imagen['tmp_name'], $carpetaImg . '/archivo.jpg');
+
 
      //echo($query);
      $resultadoBD = mysqli_query($DB, $query);
@@ -85,7 +101,7 @@
        <?php endforeach; ?>
 
 
-        <form class="formulario" method="POST" action="/bienesraices/admin/propiedades/crear.php">
+        <form class="formulario" method="POST" action="/bienesraices/admin/propiedades/crear.php" enctype="multipart/form-data">
         
 
             <fieldset>
@@ -98,7 +114,7 @@
               <input type="NUMBER" id="precio" name='precio' placeholder="preciod propiedad" min="1" value="<?php echo $precio; ?>">
 
               <label for="imagen"> imagen </label>
-              <input type="file" id="imagen" name='imagen' accept="image/jpg , image/png" >
+              <input type="file" id="imagen" accept="image/jpg , image/png" name="imagen">
 
               <label for="descipcion"> descripcion </label>
               <textarea id="descipcion" name="descipcion" >"<?php echo $descipcion; ?>"</textarea>
