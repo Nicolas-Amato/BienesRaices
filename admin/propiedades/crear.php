@@ -58,15 +58,22 @@
       //INSERTANDO EN BASE DE DATOS
 
       //ingresando  a BD
-     $carpetaIMG = '../../imagen';
+     $carpetaIMG = '../../imagen/';
 
-     if(!is_dir($carpetaIMG)){mkdir($carpetaIMG);     }
-     if(move_uploaded_file($imagen['tmp_name'], $carpetaIMG . "/archivo.jpg")){
+     //generar nomnre unico
+
+     $nombreImgRandon = md5(uniqid(rand(), true)) ."jpg";
+
+     if(!is_dir($carpetaIMG)){mkdir($carpetaIMG);}
+     if(move_uploaded_file($imagen['tmp_name'], $carpetaIMG . $nombreImgRandon)){
       chmod($carpetaIMG,0777);
       echo "subido correctamente";
      } else{
       $error = $_FILES["imagen"]["error"];
      }
+
+
+
      exit;
 
      //subir imagen a BD
