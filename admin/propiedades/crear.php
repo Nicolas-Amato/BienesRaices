@@ -3,6 +3,17 @@
   require '../../includes/config/database.php';
   $DB = conectar_DB();
 
+   //campo vendedores
+
+   $consulta = "SELECT * FROM vendedores";
+   $consultaV = mysqli_query($DB, $consulta);
+
+
+    if($consultaV){
+     echo "conexcion exitosa con vendedores.id";
+    }
+// variable para mortrar errores
+    $errores = [];
 
     $titulo = '';
     $precio = '';
@@ -11,26 +22,21 @@
     $WC= '';
     $estacionamiento = '';
     $vendedor_ID = '';
-    $publicacion = '';
+   
   
   if($_SERVER['REQUEST_METHOD']  === 'POST' ) {
 
     $errores = [];
 
-    $titulo = $_POST['titulo'];
-    $precio = $_POST['precio'];
-    $descipcion = $_POST['descipcion'];
-    $habitaciones = $_POST['habitaciones'];
-    $WC= $_POST['WC'];
-    $estacionamiento = $_POST['estacionamiento'];
-    $vendedor_ID = $_POST['vendedor_ID'];
+    $titulo = mysqli_real_escape_string( $DB, $_POST['titulo']);
+    $precio = mysqli_real_escape_string( $DB, $_POST['precio']);
+    $descipcion = mysqli_real_escape_string( $DB, $_POST['descipcion']);
+    $habitaciones = mysqli_real_escape_string( $DB, $_POST['habitaciones']);
+    $WC= mysqli_real_escape_string( $DB, $_POST['WC']);
+    $estacionamiento = mysqli_real_escape_string( $DB, $_POST['estacionamiento']);
+    $vendedor_ID = mysqli_real_escape_string( $DB, $_POST['vendedor_ID']);
     $publicado = date('y/m/d');
-
-    //Consultar vendedores
-
-    $consulta = "SELECT * FROM vendedores";
-    $resultado = mysqli_query($DB, $consulta);
-
+ 
     //vereficando completado de campos
 
     if(!$titulo){$errores[] = 'la Titulo es OBLIGATORIA';}
@@ -56,7 +62,7 @@
      $resultadoBD = mysqli_query($DB, $query);
 
       if($resultadoBD){
-        echo 'insertado correctamente';
+        header('location:/bienesraices/admin/index.php');
       }
 
     }    
@@ -68,23 +74,20 @@
         
 ?>
 
-
     <main class="contenedor seccion">
         <h1> Generar Publicacion Propiedad </h1>
-
-
         <a href="/bienesRaices/admin/index.php" class="boton boton-verde-no-block">volver</a>
-
-       <?php
-       $errores = [''];
-       foreach($errores as $error) : ?>
+      
+       <?php foreach ($errores as $error) : ?>
        <div class="alerta error">
-        <?php $error; ?>
+        <?php echo $error; ?>
        </div>
        <?php endforeach; ?>
 
 
         <form class="formulario" method="POST" action="/bienesraices/admin/propiedades/crear.php">
+        
+
             <fieldset>
               <legend> Informacion General </legend>
 
@@ -120,16 +123,15 @@
             <fieldset>
               <legend>Informacion Vendedor</legend>
                <select name="vendedor_ID">
-                  <option value="">--seleccione--</option>
-                  <?php while ($vendedor = mysqli_fetch_assoc($resultado) ) :?>
-                   <option <?php echo $vendedor_ID === $vendedor['id'] ? 'select': ''; ?> value="<?php echo $vendedor['id']?>"> <?php echo $vendedor['nombre'] ." ". $vendedor['apellido']; ?> </option>
+                  <option value=''>--seleccione--</option>
+                  <?php while($vendedor = mysqli_fetch_assoc($consultaV)) : ?>
+                    <option <?php echo $vendedor_ID === $vendedor['id'] ? 'selected' : '' ?> value= "<?php echo $vendedor['id']?>"> <?php echo $vendedor["nombre"] ." ". $vendedor["apellido"];?> </option>
                   <?php endwhile; ?>
                </select>
 
-            </fieldset>
-             
+            </fieldset>        
 
-          <input type="submit" value='crear propiedad' class="boton boton-verde-no-block">
+            <input type="submit" value='crear propiedad' class="boton boton-verde-no-block">    
         </form>
 
             
