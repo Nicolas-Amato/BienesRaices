@@ -62,7 +62,7 @@
 
      //generar nomnre unico
 
-     $nombreImgRandon = md5(uniqid(rand(), true)) ."jpg";
+     $nombreImgRandon = md5(uniqid(rand(), true)) .".jpg";
 
      if(!is_dir($carpetaIMG)){mkdir($carpetaIMG);}
      if(move_uploaded_file($imagen['tmp_name'], $carpetaIMG . $nombreImgRandon)){
@@ -77,8 +77,7 @@
      exit;
 
      //subir imagen a BD
-
-     
+   
 
 
       $query = " INSERT INTO propiedades (titulo, precio, descipcion,
