@@ -1,7 +1,7 @@
 <?php
 
 
-    $mensajeWEB = $_GET['mensaje'];
+    $mensajeWEB = $_GET['mensaje'] ?? null;
 
      require '../includes/funciones.php';   
      incluirTemplate('header');
