@@ -1,5 +1,5 @@
 <?php
-  //base de datos
+  //i portar coneccion desde base de datos
   require '../../includes/config/database.php';
   $DB = conectar_DB();
 
@@ -73,13 +73,14 @@
      }
    
 
+      // parametros de Query
 
       $query = " INSERT INTO propiedades (titulo, precio, descipcion,
       habitaciones, WC, estacionamiento, publicado, vendedores_ID, imagen) VALUES (
      '$titulo', '$precio', '$descipcion', '$habitaciones',
      '$WC', '$estacionamiento','$publicado', '$vendedor_ID', '$imagen') ";
      
-     //echo($query);
+     //consulta a la base de dataos  echo($query);
      $resultadoBD = mysqli_query($DB, $query);
 
       if($resultadoBD){
