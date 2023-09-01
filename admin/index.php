@@ -2,7 +2,6 @@
 
 
     $mensajeWEB = $_GET['mensaje'];
-    
 
      require '../includes/funciones.php';   
      incluirTemplate('header');
@@ -11,7 +10,7 @@
 
     <main class="contenedor seccion">
         <h1> Administrador </h1>
-        <?php if(intval($mensajeWEB === 1)):?>
+        <?php if($mensajeWEB == 1):?>
             <p class="alerta exito"> anuncio creado correctamente </p>
         <?php endif;?>
 
