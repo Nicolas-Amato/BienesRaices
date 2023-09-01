@@ -71,12 +71,6 @@
      } else{
       $error = $_FILES["imagen"]["error"];
      }
-
-
-
-     exit;
-
-     //subir imagen a BD
    
 
 
@@ -89,7 +83,7 @@
      $resultadoBD = mysqli_query($DB, $query);
 
       if($resultadoBD){
-        header('location:/bienesraices/admin/index.php');
+        header('location:/bienesraices/admin/index.php?mensaje=1');
       }
 
     }    
