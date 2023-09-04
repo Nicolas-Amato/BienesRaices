@@ -34,8 +34,8 @@
                     <td> <img src="../imagen/1f2bbaab32e878c781145e0665ef4b5a.jpg" class="imagen-repo"></td>
                     <td>$ 252000</td>
                     <td>
-                       <a href="">eliminar</a>
-                       <a href="">actualizar</a>
+                       <a href="" class="boton-rojo-block">eliminar</a>
+                       <a href="" class="boton-amarillo-block">actualizar</a>
                     </td>
                 </tr>
                 
