@@ -22,7 +22,7 @@ table.propiedades{
     width: 100%;
     border-spacing: 0;
 
-    .table{
+    .thead{
         background-color: $verde;
     }
 
@@ -30,4 +30,9 @@ table.propiedades{
         color: $blanco;
         padding: 2rem;
     }
+}
+
+
+.imagen-repo{
+    width: 100px;
 }

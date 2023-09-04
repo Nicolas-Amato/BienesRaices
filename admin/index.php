@@ -26,6 +26,7 @@
                     <th>Acciones</th>
                 </tr>
             </thead>
+            
             <tbody>
                 <th>
                     <tr>1</tr>
