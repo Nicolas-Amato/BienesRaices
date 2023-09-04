@@ -44,8 +44,8 @@ $ResulBD = mysqli_query($DB, $query);
                 <tr>
                     <td><?php echo $listado['id'] ?></td>
                     <td><?php echo $listado['titulo']?></td>
-                    <td> <img src="../imagen/<?php echo $listado['imgen'] ?>" class="imagen-repo"></td>
-                    <td><?php echo $listado['precio']?></td>
+                    <td> <img src="./imagen/<?php echo $listado['imagen']; ?>" class="imagen-repo"></td>
+                    <td> $ <?php echo $listado['precio']?></td>
                     <td>
                        <a href="" class="boton-rojo-block">eliminar</a>
                        <a href="" class="boton-amarillo-block">actualizar</a>
