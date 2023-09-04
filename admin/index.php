@@ -48,7 +48,7 @@ $ResulBD = mysqli_query($DB, $query);
                     <td> $ <?php echo $listado['precio']?></td>
                     <td>
                        <a href="" class="boton-rojo-block">eliminar</a>
-                       <a href="" class="boton-amarillo-block">actualizar</a>
+                       <a href="../admin/propiedades/actualizar.php? id=<?php echo $listado['id']; ?>" class="boton-amarillo-block">actualizar</a>
                     </td>
                 </tr>
 
