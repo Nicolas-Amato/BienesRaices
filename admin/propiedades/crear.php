@@ -1,5 +1,5 @@
 <?php
-  //i portar coneccion desde base de datos
+  //importar coneccion desde base de datos
   require '../../includes/config/database.php';
   $DB = conectar_DB();
 

@@ -1,11 +1,23 @@
 <?php
+ //importar coneccion
+ require '../includes/config/database.php';
+ $DB = conectar_DB();
+
+ //escribir el query
+
+ $query = "SELECT * FROM propiedades";
+
+  //consulta BD
+$ResulBD = mysqli_query($DB, $query);
+
 
 
     $mensajeWEB = $_GET['mensaje'] ?? null;
 
+    // incluye template
      require '../includes/funciones.php';   
      incluirTemplate('header');
-    ?>
+?>
 
 
     <main class="contenedor seccion">
@@ -28,17 +40,19 @@
             </thead>
 
             <tbody>
+             <?php while($listado = mysqli_fetch_assoc($ResulBD)) : ?>
                 <tr>
-                    <td>1</td>
-                    <td>casa en la playa</td>
-                    <td> <img src="../imagen/1f2bbaab32e878c781145e0665ef4b5a.jpg" class="imagen-repo"></td>
-                    <td>$ 252000</td>
+                    <td><?php echo $listado['id'] ?></td>
+                    <td><?php echo $listado['titulo']?></td>
+                    <td> <img src="../imagen/<?php echo $listado['imgen'] ?>" class="imagen-repo"></td>
+                    <td><?php echo $listado['precio']?></td>
                     <td>
                        <a href="" class="boton-rojo-block">eliminar</a>
                        <a href="" class="boton-amarillo-block">actualizar</a>
                     </td>
                 </tr>
-                
+
+             <?php endwhile; ?> 
         
             </tbody>
         </table>
