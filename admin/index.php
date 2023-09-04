@@ -26,18 +26,18 @@
                     <th>Acciones</th>
                 </tr>
             </thead>
-            
+
             <tbody>
-                <th>
-                    <tr>1</tr>
-                    <tr>casa en la playa</tr>
-                    <tr> <img src="../imagen/1f2bbaab32e878c781145e0665ef4b5a.jpg" class="imagen-repo"></tr>
-                    <tr>$ 252000</tr>
-                    <tr>
+                <tr>
+                    <td>1</td>
+                    <td>casa en la playa</td>
+                    <td> <img src="../imagen/1f2bbaab32e878c781145e0665ef4b5a.jpg" class="imagen-repo"></td>
+                    <td>$ 252000</td>
+                    <td>
                        <a href="">eliminar</a>
                        <a href="">actualizar</a>
-                    </tr>
-                </th>
+                    </td>
+                </tr>
                 
         
             </tbody>
