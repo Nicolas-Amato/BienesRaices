@@ -9,7 +9,7 @@
 
    
    //importar coneccion desde base de datos
-   require "../../includes/config/database.php";
+   require '/includes/config/database.php';
    $DB = conectar_DB();
 
 
@@ -17,7 +17,7 @@
 
    //CONSULTA PROPIEDAD
    
-   $consultaPRO = "SELECT * FROM vendedores WHERE id = {$id}";
+   $consultaPRO = "SELECT * FROM vendedores WHERE id = $id";
    $resultadoPRO = mysqli_query($DB, $consultaPRO);
    $actualizarPRO = mysqli_fetch_array($resultadoPRO);
 
