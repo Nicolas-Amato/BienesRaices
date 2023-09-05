@@ -1,44 +1,44 @@
 <?php
-// FILTRO PARA 
-
    //validando ID
    $id = $_GET['id'];
    $id= filter_var($id, FILTER_VALIDATE_INT);
    
-
    if(!$id){
     header('location: ../index.php');
    }
 
-  //importar coneccion desde base de datos
-  require "/includes/config/database.php";
-  $DB = conectar_DB();
+   
+   //importar coneccion desde base de datos
+   require "../../includes/config/database.php";
+   $DB = conectar_DB();
 
 
 
 
    //CONSULTA PROPIEDAD
    
-   $consultaPRO = "SELECT * FROM vendedores WHERE is = {$id}";
-   $resuldatoPRO = mysqli_query($DB, $consultaPRO);
-   $PropiedadLista = mysqli_fetch_assoc($resuldatoPRO);
+   $consultaPRO = "SELECT * FROM vendedores WHERE id = {$id}";
+   $resultadoPRO = mysqli_query($DB, $consultaPRO);
+   $actualizarPRO = mysqli_fetch_array($resultadoPRO);
 
-
+   echo "<pre>";
+   var_dump($actualizarPRO);
+   echo "</pre>";
    //CONSULTA VENDEDORES
 
    $consulta = "SELECT * FROM vendedores";
    $consultaV = mysqli_query($DB, $consulta);
 
-// variable para mortrar errores
+   // variable para mortrar errores
     $errores = [];
 
-    $titulo = $PropiedadLista['titulo'];
-    $precio = $PropiedadLista['precio'];
-    $descipcion = $PropiedadLista['descipcio'];
-    $habitaciones = $PropiedadLista['habitaciones'];
-    $WC= $PropiedadLista['WC'];
-    $estacionamiento = $PropiedadLista['estacionamiento'];
-    $vendedor_ID = $PropiedadLista['vendedor_ID'];
+    $titulo = $actualizarPRO["titulo"];
+    $precio = $actualizarPRO['precio'];
+    $descipcion = $actualizarPRO['descipcio'];
+    $habitaciones = $actualizarPRO['habitaciones'];
+    $WC= $actualizarPRO['WC'];
+    $estacionamiento = $actualizarPRO['estacionamiento'];
+    $vendedor_ID = $actualizarPRO['vendedor_ID'];
    
   
   if($_SERVER['REQUEST_METHOD']  === 'POST' ) {
@@ -110,7 +110,7 @@
       }
 
     }    
-} 
+  } 
   
   require '../../includes/funciones.php';   
   incluirTemplate('header');
