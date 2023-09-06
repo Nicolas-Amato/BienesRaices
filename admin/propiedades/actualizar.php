@@ -1,7 +1,7 @@
 <?php
    //validando ID
-   $id = $_GET['id'];
-   $id= filter_var($id, FILTER_VALIDATE_INT);
+   $PROPIEDADid = $_GET['id'];
+   $PROPIEDADid= filter_var($PROPIEDADid, FILTER_VALIDATE_INT);
    
    if(!$id){
     header('location: ../index.php');
@@ -11,9 +11,6 @@
    //importar coneccion desde base de datos
    require '../../includes/config/database.php';
    $DB = conectar_DB();
-
-
-
 
    //CONSULTA PROPIEDAD
    
