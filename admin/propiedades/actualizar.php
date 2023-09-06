@@ -32,7 +32,8 @@
    // variable para mortrar errores
     $errores = [];
 
-    $titulo = $actualizar['titulo'];
+   
+    $titulo = $actualizar[''];
     $precio = $actualizar[''];
     $descipcion = $actualizar[''];
     $habitaciones = $actualizar[''];
