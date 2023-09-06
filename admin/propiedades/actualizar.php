@@ -3,7 +3,7 @@
    $PROPIEDADid = $_GET['id'];
    $PROPIEDADid= filter_var($PROPIEDADid, FILTER_VALIDATE_INT);
    
-   if(!$id){
+   if(!$PROPIEDADid){
     header('location: ../index.php');
    }
 
@@ -12,9 +12,12 @@
    require '../../includes/config/database.php';
    $DB = conectar_DB();
 
+
+
+
    //CONSULTA PROPIEDAD
    
-   $consulta = "SELECT * FROM vendedores WHERE id = {$id} ";
+   $consulta = "SELECT * FROM vendedores WHERE id = {$PROPIEDADid} ";
    $resultado = mysqli_query($DB, $consulta);
    $actualizar = mysqli_fetch_assoc($resultado);
 
