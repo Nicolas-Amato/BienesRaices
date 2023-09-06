@@ -9,7 +9,7 @@
 
    
    //importar coneccion desde base de datos
-   require '/includes/config/database.php';
+   require '../../includes/config/database.php';
    $DB = conectar_DB();
 
 
@@ -17,28 +17,28 @@
 
    //CONSULTA PROPIEDAD
    
-   $consultaPRO = "SELECT * FROM vendedores WHERE id = $id";
-   $resultadoPRO = mysqli_query($DB, $consultaPRO);
-   $actualizarPRO = mysqli_fetch_array($resultadoPRO);
+   $consulta = "SELECT * FROM vendedores WHERE id = {$id} ";
+   $resultado = mysqli_query($DB, $consulta);
+   $actualizar = mysqli_fetch_assoc($resultado);
 
    echo "<pre>";
-   var_dump($actualizarPRO);
+   var_dump($actualizar);
    echo "</pre>";
-   //CONSULTA VENDEDORES
 
+   //CONSULTA VENDEDORES
    $consulta = "SELECT * FROM vendedores";
    $consultaV = mysqli_query($DB, $consulta);
 
    // variable para mortrar errores
     $errores = [];
 
-    $titulo = $actualizarPRO["titulo"];
-    $precio = $actualizarPRO['precio'];
-    $descipcion = $actualizarPRO['descipcio'];
-    $habitaciones = $actualizarPRO['habitaciones'];
-    $WC= $actualizarPRO['WC'];
-    $estacionamiento = $actualizarPRO['estacionamiento'];
-    $vendedor_ID = $actualizarPRO['vendedor_ID'];
+    $titulo = $actualizar['titulo'];
+    $precio = $actualizar[''];
+    $descipcion = $actualizar[''];
+    $habitaciones = $actualizar[''];
+    $WC= $actualizar[''];
+    $estacionamiento = $actualizar[''];
+    $vendedor_ID = $actualizar[''];
    
   
   if($_SERVER['REQUEST_METHOD']  === 'POST' ) {

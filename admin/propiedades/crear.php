@@ -8,6 +8,7 @@
    $consulta = "SELECT * FROM vendedores";
    $consultaV = mysqli_query($DB, $consulta);
 
+   
 // variable para mortrar errores
     $errores = [];
 

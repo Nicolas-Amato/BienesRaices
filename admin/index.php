@@ -58,11 +58,6 @@ $ResulBD = mysqli_query($DB, $query);
         </table>
 
 
-
-
-
-
-
     </main>
 
 
