@@ -1,9 +1,9 @@
 <?php
    //validando ID
-   $PROPIEDADid = $_GET['id'];
-   $PROPIEDADid= filter_var($PROPIEDADid, FILTER_VALIDATE_INT);
+   $propiedadId = $_GET['id'];
+   $propiedadId= filter_var($propiedadId, FILTER_VALIDATE_INT);
    
-   if(!$PROPIEDADid){
+   if(!$propiedadId){
     header('location: ../index.php');
    }
 
@@ -17,13 +17,9 @@
 
    //CONSULTA PROPIEDAD
    
-   $consulta = "SELECT * FROM vendedores WHERE id = {$PROPIEDADid} ";
+   $consulta = "SELECT * FROM propiedades WHERE id = {$propiedadId}";
    $resultado = mysqli_query($DB, $consulta);
    $actualizar = mysqli_fetch_assoc($resultado);
-
-   echo "<pre>";
-   var_dump($actualizar);
-   echo "</pre>";
 
    //CONSULTA VENDEDORES
    $consulta = "SELECT * FROM vendedores";
@@ -31,15 +27,15 @@
 
    // variable para mortrar errores
     $errores = [];
-
-   
-    $titulo = $actualizar[''];
-    $precio = $actualizar[''];
-    $descipcion = $actualizar[''];
-    $habitaciones = $actualizar[''];
-    $WC= $actualizar[''];
-    $estacionamiento = $actualizar[''];
-    $vendedor_ID = $actualizar[''];
+       
+    $titulo = $actualizar['titulo'];
+    $precio = $actualizar['precio'];
+    $descipcion = $actualizar['descipcion'];
+    $habitaciones = $actualizar['habitaciones'];
+    $WC= $actualizar['WC'];
+    $estacionamiento = $actualizar['estacionamiento'];
+    $vendedor_ID = $actualizar['vendedor_ID'];
+    $imagen =  $actualizar['imagen']; 
    
   
   if($_SERVER['REQUEST_METHOD']  === 'POST' ) {
@@ -144,6 +140,7 @@
 
               <label for="imagen"> imagen </label>
               <input type="file" id="imagen" accept="image/jpg , image/png" name="imagen">
+              <img  class="imagen-small" src="/imagen/<?php echo $imagen ?> " >
 
               <label for="descipcion"> descripcion </label>
               <textarea id="descipcion" name="descipcion" >"<?php echo $descipcion; ?>"</textarea>
