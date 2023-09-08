@@ -80,7 +80,7 @@
 
      //generar nomnre unico
 
-     $nombreImgRandon = md5( uniqid( rand(), true ) ) . ".jpg";
+     $nombreImgRandon = md5( uniqid( rand(), true ) ).".jpg";
  
 
      if(!is_dir($carpetaIMG)){mkdir($carpetaIMG);}
