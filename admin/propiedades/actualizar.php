@@ -34,11 +34,16 @@
     $habitaciones = $actualizar['habitaciones'];
     $WC= $actualizar['WC'];
     $estacionamiento = $actualizar['estacionamiento'];
-    $vendedor_ID = $actualizar['vendedor_ID'];
+    $vendedor_ID = $actualizar['vendedores_id'];
     $imagen =  $actualizar['imagen']; 
    
   
   if($_SERVER['REQUEST_METHOD']  === 'POST' ) {
+    echo '<pre>';
+    var_dump($_POST);
+    echo '</pre>';
+    exit;
+
 
     $titulo = mysqli_real_escape_string( $DB, $_POST['titulo']);
     $precio = mysqli_real_escape_string( $DB, $_POST['precio']);
@@ -71,7 +76,7 @@
      $carpetaIMG = '../../imagen/';
      if(!is_dir($carpetaIMG)){mkdir($carpetaIMG);}
 
-     //generar nomnre unico
+     //generar nomBre unico
      $nombreImgRandon = md5( uniqid( rand(), true ) ).".jpg";
  
      if(move_uploaded_file($imagen['tmp_name'], $carpetaIMG . $nombreImgRandon)){

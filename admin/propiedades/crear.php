@@ -29,7 +29,7 @@
     $habitaciones = mysqli_real_escape_string( $DB, $_POST['habitaciones']);
     $WC= mysqli_real_escape_string( $DB, $_POST['WC']);
     $estacionamiento = mysqli_real_escape_string( $DB, $_POST['estacionamiento']);
-    $vendedor_ID = mysqli_real_escape_string( $DB, $_POST['vendedor_ID']);
+    $vendedor_ID = mysqli_real_escape_string( $DB, $_POST['vendedores_id']);
     $publicado = date('y/m/d');
     $imagen = $_FILES['imagen'];
     //vereficando completado de campos
