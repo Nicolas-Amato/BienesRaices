@@ -85,7 +85,7 @@
       // parametros de Query
 
       $query = " UPDATE propiedades SET titulo = '{$titulo}', precio = {$precio}, descipcion = '{$descipcion}', habitaciones = {$habitaciones}, WC = {$WC},
-      estacionamiento = {$estacionamiento}, vendedor_id = {$vendedor_ID} WHERE id = {$propiedadId}";
+      estacionamiento = {$estacionamiento}, vendedores_id = {$vendedor_ID} WHERE id = {$propiedadId}";
      
      //consulta a la base de dataos  echo($query);
      $resultadoBD = mysqli_query($DB, $query);
