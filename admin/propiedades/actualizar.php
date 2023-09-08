@@ -58,32 +58,22 @@
     if(!$WC){$errores[] = 'la cantidad de baños es OBLIGATORIA';}
     if(!$estacionamiento){$errores[] = 'la cantidad OBLIGATORIA';}
     if(!$vendedor_ID){$errores[] = 'elige un vendedor';}
-    //validando img o files
-    if(!$imagen['name'] || $imagen['error']){
-      $errores[] = 'la imagen es OBLIGATORIA';
-    }
+    
     //validando tamaño archivo
-
     $medida = 1000 * 1000;
-
     if(!$imagen['size'] > $medida ){
       $errores [] = 'el tamaño es demasiado GRANDE';
     }
     
     //verificandi validacion
-
     if(empty($errores)){
-      //INSERTANDO EN BASE DE DATOS
-
-      //ingresando  a BD
+    //creando carpeta
      $carpetaIMG = '../../imagen/';
+     if(!is_dir($carpetaIMG)){mkdir($carpetaIMG);}
 
      //generar nomnre unico
-
      $nombreImgRandon = md5( uniqid( rand(), true ) ).".jpg";
  
-
-     if(!is_dir($carpetaIMG)){mkdir($carpetaIMG);}
      if(move_uploaded_file($imagen['tmp_name'], $carpetaIMG . $nombreImgRandon)){
       chmod($carpetaIMG,0777);
       echo "subido correctamente";
@@ -126,7 +116,7 @@
        <?php endforeach; ?>
 
 
-        <form class="formulario" method="POST" action="/bienesraices/admin/propiedades/crear.php" enctype="multipart/form-data">
+        <form class="formulario" method="POST" enctype="multipart/form-data">
         
 
             <fieldset>
