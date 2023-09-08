@@ -39,11 +39,6 @@
    
   
   if($_SERVER['REQUEST_METHOD']  === 'POST' ) {
-    echo '<pre>';
-    var_dump($_POST);
-    echo '</pre>';
-    exit;
-
 
     $titulo = mysqli_real_escape_string( $DB, $_POST['titulo']);
     $precio = mysqli_real_escape_string( $DB, $_POST['precio']);
@@ -89,10 +84,8 @@
 
       // parametros de Query
 
-      $query = " INSERT INTO propiedades (titulo, precio, descipcion,
-      habitaciones, WC, estacionamiento, publicado, vendedores_ID, imagen) VALUES (
-     '$titulo', '$precio', '$descipcion', '$habitaciones',
-     '$WC', '$estacionamiento','$publicado', '$vendedor_ID', '$imagen') ";
+      $query = " UPDATE propiedades SET titulo = '{$titulo}', precio = {$precio}, descipcion = '{$descipcion}', habitaciones = {$habitaciones}, WC = {$WC},
+      estacionamiento = {$estacionamiento}, vendedor_id = {$vendedor_ID} WHERE id = {$propiedadId}";
      
      //consulta a la base de dataos  echo($query);
      $resultadoBD = mysqli_query($DB, $query);
@@ -135,7 +128,7 @@
 
               <label for="imagen"> imagen </label>
               <input type="file" id="imagen" accept="image/jpg , image/png" name="imagen">
-              <img  class="imagen-small" src="/imagen/<?php echo $imagen ?> " >
+              <img  class="imagen-small" src="/imagen/<?php echo $imagen ?>" >
 
               <label for="descipcion"> descripcion </label>
               <textarea id="descipcion" name="descipcion" >"<?php echo $descipcion; ?>"</textarea>

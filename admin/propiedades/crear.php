@@ -78,7 +78,7 @@
       // parametros de Query
 
       $query = " INSERT INTO propiedades (titulo, precio, descipcion,
-      habitaciones, WC, estacionamiento, publicado, vendedores_ID, imagen) VALUES (
+      habitaciones, WC, estacionamiento, publicado, vendedores_id, imagen) VALUES (
      '$titulo', '$precio', '$descipcion', '$habitaciones',
      '$WC', '$estacionamiento','$publicado', '$vendedor_ID', '$imagen') ";
      
