@@ -26,11 +26,11 @@
     if($id){
 
         //delete imagen
-        $query = "DELETE imagen FROM propiedades WHERE id = {$id}";
+        $query = "SELECT imagen FROM propiedades WHERE id = {$id}";
         $resultado = mysqli_query($DB, $query);
+        $propiedades = mysqli_fetch_assoc($resultado);
 
-        unlink();
-
+        unlink('./imagen/' . $propiedades['imagen']);
 
         //delete propiedasdes
         $query = "DELETE FROM propiedades WHERE id = {$id}";
