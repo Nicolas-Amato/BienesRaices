@@ -1,4 +1,10 @@
 <?php
+
+
+//echo "<pre>";
+//var_dump($_POST);
+//echo "</pre>";
+
  //importar coneccion
  require '../includes/config/database.php';
  $DB = conectar_DB();
@@ -8,15 +14,37 @@
  $query = "SELECT * FROM propiedades";
 
   //consulta BD
-$ResulBD = mysqli_query($DB, $query);
+ $ResulBD = mysqli_query($DB, $query);
+
+ $mensajeWEB = $_GET['mensaje'] ?? null;
 
 
+ if($_SERVER['REQUEST_METHOD'] === 'POST'){
+    $id = $_POST['id'];
+    $id = filter_var($id, FILTER_VALIDATE_INT);
 
-    $mensajeWEB = $_GET['mensaje'] ?? null;
+    if($id){
 
-    // incluye template
-     require '../includes/funciones.php';   
-     incluirTemplate('header');
+        //delete imagen
+        $query = "DELETE imagen FROM propiedades WHERE id = {$id}";
+        $resultado = mysqli_query($DB, $query);
+
+        unlink();
+
+
+        //delete propiedasdes
+        $query = "DELETE FROM propiedades WHERE id = {$id}";
+        $resultado = mysqli_query($DB, $query);
+
+        if($resultado){
+            header('location/admin');
+        }
+    }
+ }
+
+ // incluye template
+ require '../includes/funciones.php';   
+ incluirTemplate('header');
 ?>
 
     <main class="contenedor seccion">
@@ -45,12 +73,20 @@ $ResulBD = mysqli_query($DB, $query);
                 <tr>
                     <td><?php echo $listado['id'] ?></td>
                     <td><?php echo $listado['titulo']?></td>
-                    <td> <img src="/imagen/<?php echo $listado['imagen'];?>" class="imagen-repo"></td>
+                    <td> <img src="../imagen/<?php echo $listado['imagen'];?>" class="imagen-repo"></td>
                     <td> $ <?php echo $listado['precio']?></td>
                     <td>
-                       <a href="" class="boton-rojo-block">eliminar</a>
-                       <a href="../admin/propiedades/actualizar.php?id=<?php echo $listado['id']; ?>" class="boton-amarillo-block">actualizar</a>
+
+                    <form method="POST" class="W-100">
+                    <input type="HIDDEN" href="" name="id" value=<?php echo $listado['id'] ?>>
+
+                    <input type="SUBMIT" href="" class="boton-rojo-block" value="Eliminar">
+
+                    </form>
+
+                    <a href="../admin/propiedades/actualizar.php?id=<?php echo $listado['id']; ?>" class="boton-amarillo-block">actualizar</a>
                     </td>
+
                 </tr>
 
              <?php endwhile; ?> 
