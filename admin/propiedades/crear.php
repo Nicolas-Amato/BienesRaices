@@ -125,7 +125,7 @@
               <input type="file" id="imagen" accept="image/jpg , image/png" name="imagen">
 
               <label for="descipcion"> descripcion </label>
-              <textarea id="descipcion" name="descipcion" >"<?php echo $descipcion; ?>"</textarea>
+              <textarea id="descipcion" name="descipcion" ><?php echo $descipcion; ?></textarea>
 
             </fieldset>
             
