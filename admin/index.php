@@ -22,7 +22,9 @@ $ResulBD = mysqli_query($DB, $query);
     <main class="contenedor seccion">
         <h1> Administrador </h1>
         <?php if($mensajeWEB == 1):?>
-            <p class="alerta exito"> anuncio creado correctamente </p>
+            <p class="alerta exito"> Anuncio Creado Correctamente </p>
+        <?php elseif($mensajeWEB == 2):?>
+            <p class="alerta exito"> Anuncio Actualizado Correctamente </p>
         <?php endif;?>
 
         <a href="/bienesraices/admin/propiedades/crear.php" class="boton boton-verde-no-block"> Nueva Propiedad </a>
@@ -43,7 +45,7 @@ $ResulBD = mysqli_query($DB, $query);
                 <tr>
                     <td><?php echo $listado['id'] ?></td>
                     <td><?php echo $listado['titulo']?></td>
-                    <td> <img src="./imagen/<?php echo $listado['imagen'];?>" class="imagen-repo"></td>
+                    <td> <img src="/imagen/<?php echo $listado['imagen'];?>" class="imagen-repo"></td>
                     <td> $ <?php echo $listado['precio']?></td>
                     <td>
                        <a href="" class="boton-rojo-block">eliminar</a>
