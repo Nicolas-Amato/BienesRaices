@@ -31,9 +31,11 @@
     $estacionamiento = mysqli_real_escape_string( $DB, $_POST['estacionamiento']);
     $vendedor_ID = mysqli_real_escape_string( $DB, $_POST['vendedor_ID']);
     $publicado = date('y/m/d');
-    $imagen = $_FILES['imagen'];
-    //vereficando completado de campos
 
+    //asignago FILES A variable
+    $imagen = $_FILES['imagen'];
+
+    //vereficando completado de campos
     if(!$titulo){$errores[] = 'la Titulo es OBLIGATORIA';}
     if(!$precio){$errores[] = 'el precio es OBLIGATORIA';}
     if(strlen ($descipcion) < 50){$errores[] = 'la Descripcion es OBLIGATORIA';}
@@ -45,10 +47,9 @@
     if(!$imagen['name'] || $imagen['error']){
       $errores[] = 'la imagen es OBLIGATORIA';
     }
+
     //validando tamaño archivo
-
     $medida = 1000 * 1000;
-
     if(!$imagen['size'] > $medida ){
       $errores [] = 'el tamaño es demasiado GRANDE';
     }
@@ -58,16 +59,16 @@
     if(empty($errores)){
       //INSERTANDO EN BASE DE DATOS
 
-      //ingresando  a BD
+     //creando carpeta para almasenar imagenes
      $carpetaIMG = '../../imagen/';
-
-     //generar nomnre unico
-
-     $nombreImgRandon = md5( uniqid( rand(), true ) ) . ".jpg";
- 
-
      if(!is_dir($carpetaIMG)){mkdir($carpetaIMG);}
-     if(move_uploaded_file($imagen['tmp_name'], $carpetaIMG . $nombreImgRandon)){
+     
+     //generar nomnre unico
+     $nombreImgRandon = md5( uniqid( rand(), true ) ) . ".jpg";
+     var_dump($nombreImgRandon);
+     exit;
+     //subir imagenes
+     if(move_uploaded_file($imagen["tmp_name"], $carpetaIMG . $nombreImgRandon)){
       chmod($carpetaIMG,0777);
       echo "subido correctamente";
      } else{
@@ -80,7 +81,7 @@
       $query = " INSERT INTO propiedades (titulo, precio, descipcion,
       habitaciones, WC, estacionamiento, publicado, vendedores_id, imagen) VALUES (
      '$titulo', '$precio', '$descipcion', '$habitaciones',
-     '$WC', '$estacionamiento','$publicado', '$vendedor_ID', '$imagen') ";
+     '$WC', '$estacionamiento','$publicado', '$vendedor_ID', '$nombreImgRandon') ";
      
      //consulta a la base de dataos  echo($query);
      $resultadoBD = mysqli_query($DB, $query);
