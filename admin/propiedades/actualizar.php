@@ -69,38 +69,32 @@
     
     if(empty($errores)){
 
-     //creando carpeta
-     $carpetaIMG = '../../imagen/';
-     if(!is_dir($carpetaIMG)){
-      mkdir($carpetaIMG);
-     }
-
-    if($imagen['name']){
-      unlink($carpetaIMG . $actualizar['imagen']);
-
-       //generar nomBre unico
-      $nombreImgRandon = md5( uniqid( rand(), true ) ) .".jpg";
- 
-      if(move_uploaded_file($imagen['tmp_name'], $carpetaIMG . $nombreImgRandon)){
-       chmod($carpetaIMG,0777);
-       echo "subido correctamente";
-      } else{
-       $error = $_FILES["imagen"]["error"];
+      //creando carpeta
+      $carpetaIMG = '../../imagen/';
+      if(!is_dir($carpetaIMG)){
+       mkdir($carpetaIMG);
       }
-    } else {
-      $carpetaIMG = $actualizar['imagen'];
-    }
 
-     // parametros de Query
+      //eliminar foto para actualizarla
+      if($imagen['name']){
+        unlink($carpetaIMG . $actualizar['imagen']);
+      }
+      //generar nomBre unico
+      $nombreImgRandon = md5( uniqid( rand(), true ) ) .".jpg";
+      // movemos el archivo  
+      move_uploaded_file($imagen['tmp_name'], $carpetaIMG . $nombreImgRandon);
 
-      $query = " UPDATE propiedades SET titulo = '{$titulo}', precio = {$precio}, descipcion = '{$descipcion}', habitaciones = {$habitaciones}, WC = {$WC},
+      // parametros de Query
+      $query = " UPDATE propiedades SET titulo = '{$titulo}', precio = {$precio}, imagen = '{$nombreImgRandon}', descipcion = '{$descipcion}', habitaciones = {$habitaciones}, WC = {$WC},
       estacionamiento = {$estacionamiento}, vendedores_id = {$vendedor_ID} WHERE id = {$propiedadId}";
      
+
+     echo($query);
+
      //consulta a la base de dataos  echo($query);
      $resultadoBD = mysqli_query($DB, $query); 
 
       if($resultadoBD){
-        //redireccionar al usuario
         header('location:/bienesraices/admin/index.php?mensaje=2 ');
       }
 
