@@ -65,8 +65,7 @@
      
      //generar nomnre unico
      $nombreImgRandon = md5( uniqid( rand(), true ) ) . ".jpg";
-     var_dump($nombreImgRandon);
-     exit;
+     
      //subir imagenes
      if(move_uploaded_file($imagen["tmp_name"], $carpetaIMG . $nombreImgRandon)){
       chmod($carpetaIMG,0777);
