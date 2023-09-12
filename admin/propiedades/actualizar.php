@@ -77,13 +77,16 @@
 
       //eliminar foto para actualizarla
       if($imagen['name']){
+        //borra la imagen anterios en caso de subir una nueva 
         unlink($carpetaIMG . $actualizar['imagen']);
+        //genera numero randon de ID
+        $nombreImgRandon = md5( uniqid( rand(), true ) ) .".jpg";
+        // movemos el archivo  
+        move_uploaded_file($imagen['tmp_name'], $carpetaIMG . $nombreImgRandon);
+      } else {
+        $nombreImgRandon = $actualizar['imagen'];
       }
-      //generar nomBre unico
-      $nombreImgRandon = md5( uniqid( rand(), true ) ) .".jpg";
-      // movemos el archivo  
-      move_uploaded_file($imagen['tmp_name'], $carpetaIMG . $nombreImgRandon);
-
+     
       // parametros de Query
       $query = " UPDATE propiedades SET titulo = '{$titulo}', precio = {$precio}, imagen = '{$nombreImgRandon}', descipcion = '{$descipcion}', habitaciones = {$habitaciones}, WC = {$WC},
       estacionamiento = {$estacionamiento}, vendedores_id = {$vendedor_ID} WHERE id = {$propiedadId}";
