@@ -100,6 +100,7 @@
      $resultadoBD = mysqli_query($DB, $query); 
 
       if($resultadoBD){
+        //redireccionar al usuario
         header('location:/bienesraices/admin/index.php?mensaje=2 ');
       }
 

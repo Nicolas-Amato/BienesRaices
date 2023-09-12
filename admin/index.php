@@ -37,6 +37,7 @@
         $resultado = mysqli_query($DB, $query);
 
         if($resultado){
+            //redireccionar al usuario
             header('location/admin');
         }
     }
