@@ -38,7 +38,7 @@
 
         if($resultado){
             //redireccionar al usuario
-            header('location/admin');
+            header('location:/bienesraices/admin/index.php?mensaje=3 ');
         }
     }
  }
@@ -54,6 +54,8 @@
             <p class="alerta exito"> Anuncio Creado Correctamente </p>
         <?php elseif($mensajeWEB == 2):?>
             <p class="alerta exito"> Anuncio Actualizado Correctamente </p>
+        <?php elseif($mensajeWEB == 3):?>
+            <p class="alerta exito"> Anuncio Eliminado Correctamente </p>
         <?php endif;?>
 
         <a href="/bienesraices/admin/propiedades/crear.php" class="boton boton-verde-no-block"> Nueva Propiedad </a>
@@ -79,9 +81,9 @@
                     <td>
 
                     <form method="POST" class="W-100">
-                    <input type="HIDDEN" href="" name="id" value=<?php echo $listado['id'] ?>>
+                    <input type="HIDDEN" name="id" value=<?php echo $listado['id'] ?>>
 
-                    <input type="SUBMIT" href="" class="boton-rojo-block" value="Eliminar">
+                    <input type="SUBMIT" class="boton-rojo-block" value="Eliminar">
 
                     </form>
 
