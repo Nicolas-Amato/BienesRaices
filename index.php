@@ -44,7 +44,11 @@
 
     <section class="seccion contenedor">
         <h2>Casas y Departamentos En Venta</h2>
-        <?php include 'includes/template/anuncios.php'?>
+        <?php 
+         $limite = 3;
+         include 'includes/template/anuncios.php'
+        ?>
+
 
         <div class="img-contacto">
             <h3> Encuentra la Casa de Tus Sueños </h3>
