@@ -43,7 +43,7 @@ $resuldatoAnuncio = mysqli_query($DB, $query);
             </li>
           </ul>
 
-          <a href="anuncio?id=<?php echo $propiedad['id']; ?>" class="boton-amarillo">
+          <a href="anuncio.php?id=<?php echo $propiedad['id']; ?>" class="boton-amarillo">
            ver propiedad
           </a>
          </div>
@@ -51,4 +51,8 @@ $resuldatoAnuncio = mysqli_query($DB, $query);
    <?php endwhile; ?>
 
 </div>
+
+<?php
+ mysqli_close($DB);
+ ?>
 
