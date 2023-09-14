@@ -4,7 +4,7 @@ require 'includes/config/database.php';
 $DB = conectar_DB();
 
 //conaultar base de datos
-$query = "SELECT * FROM propiedades LIMIT {$limite}";
+$query = "SELECT * FROM propiedades LIMIT $limit";
 
 //obtenes resultado
 $resuldatoAnuncio = mysqli_query($DB, $query);
@@ -15,7 +15,7 @@ $resuldatoAnuncio = mysqli_query($DB, $query);
   <?php while($propiedad = mysqli_fetch_assoc($resuldatoAnuncio)): ?>
       <div class="anuncio">
          <div class="reacomodar">
-          <img class="acomodar-img" loading="lazy" src="/imagen/<?php echo $propiedad['imagen'];?>" alt="imagen anuncio">
+          <img class="acomodar-img" loading="lazy" src="/BienesRaices/imagen/<?php echo $propiedad['imagen'];?>" alt="imagen anuncio">
          </div>        
         
          <div class="contenido-anuncio">
@@ -43,7 +43,7 @@ $resuldatoAnuncio = mysqli_query($DB, $query);
             </li>
           </ul>
 
-          <a href="anuncios?id=<?php echo $propiedad['id']; ?>" class="boton-amarillo">
+          <a href="anuncio?id=<?php echo $propiedad['id']; ?>" class="boton-amarillo">
            ver propiedad
           </a>
          </div>

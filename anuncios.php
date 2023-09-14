@@ -10,6 +10,7 @@
         <h1> Anuncios </h1>
 
         <?php 
+         $limit = 9;
          include 'includes/template/anuncios.php'
         ?>
     </main>

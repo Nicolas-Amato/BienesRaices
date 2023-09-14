@@ -1,47 +1,53 @@
 <?php
 
-   require 'includes/funciones.php';   
-   incluirTemplate('header');
-   
+ $id = $_GET['id'];
+ $id = filter_var($id, FILTER_VALIDATE_INT);
+  
+ if(!$id){header('location:/');}
+
+//importar conexcion basa datos
+require 'includes/config/database.php';
+$DB = conectar_DB();
+
+//conaultar base de datos
+$query = "SELECT * FROM propiedades WHERE id = {$id}";
+
+//obtenes resultado
+$resuldatoAnuncio = mysqli_query($DB, $query);
+$propiedad = mysqli_fetch_assoc($resuldatoAnuncio);
+
+
+require 'includes/funciones.php';
+incluirTemplate('header')
 ?>
 
 
     <main class="contenedor seccion contenido-centrado">
-        <h1> Casa Del Lago </h1>
-        <picture>
-            <source srcset="build/img/anuncio1.webp" type="imagne/webp">
-            <source srcset="build/img/anuncio1.jpeg" type="imagne/jpeg">
-            <img loading="lazy" src="build/img/anuncio1.jpg" alt="imagen anuncio">
-        </picture>
-
+     <?php while($propiedad = mysqli_fetch_assoc($resuldatoAnuncio)): ?>
+        <h1><?php echo $propiedad['titulo']; ?></h1>
+    
+        <img  loading="lazy" src="/BienesRaices/imagen/<?php echo $propiedad['imagen'];?>" alt="imagen anuncio">
+       
         <div class="resumen-propiedad">
 
-            <p class="precio"> $ 3.000.000 </p>
+            <p class="precio"><?php echo number_format($propiedad['precio']); ?></p>
 
             <ul class="icono-caracteristicas">
             <li>
                 <img loading="lazy" src="build/img/icono_wc.svg" alt="icono anuncio">
-                <p>3</p>
+                <p><?php echo $propiedad['WC']; ?></p>
             </li>
             <li>
                 <img loading="lazy" src="build/img/icono_estacionamiento.svg" alt="icono estacionamiento">
-                <p>3</p>
+                <p><?php echo $propiedad['estacionamiento']; ?></p>
             </li>
             <li>
                 <img loading="lazy" src="build/img/icono_dormitorio.svg" alt="icono dormitorio">
-                <p>3</p>
+                <p><?php echo $propiedad['habitaciones']; ?></p>
             </li>
            </ul>
            
-           <p> casa en el lago con exelente vista, acabados de lujo a un exelente precio
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio labore reprehenderit+
-            repudiandae explicabo, voluptas porro aspernatur vel quaerat maxime, recusandae quia
-            magnam repellat assumenda quasi quod dignissimos cupiditate. Natus, laborum?
-            asa en el lago con exelente vista, acabados de lujo a un exelente precio
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio labore reprehenderit+
-            repudiandae explicabo, voluptas porro aspernatur vel quaerat maxime, recusandae quia
-            magnam repellat assumenda quasi quod dignissimos cupiditate. Natus, laborum?
-            </p>
+           <p><?php echo $descripciones = $propiedad['descipcion']; ?></p>
 
 
           
@@ -51,10 +57,7 @@
             
         
     </main>
-<?php 
+  <?php 
+   mysqli_close($DB);
    incluirTemplate('footer');
-   
-?>
-
-</body>
-</html>
+ ?>
