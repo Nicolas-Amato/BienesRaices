@@ -11,19 +11,40 @@
     $password = mysqli_real_escape_string($DB, $_POST['password']);
 
     if(!$email){
-        $errores[] = 'Tu Email es incorrecto o no Valido';
+        $errores[] = 'Ingresa tu Email correctamente';
     }
 
     if(!$password){
         $errores[] = 'Tu password es obligatorio';
     }
+    
+    //VALIDAMOS SI EL PASS O USUARIOES CORRECTO 
 
     if(empty($errores)){
-        $query = "SELECT * FROM usuarios WHERE id = {$email}";
+        $query = "SELECT * FROM usuarios WHERE email = '$email'";
         $resultadoLogin = mysqli_query($DB, $query);
 
         if($resultadoLogin ->num_rows){
+            //REVISAR SI EL EMAIL ES CORECTO
+            $usuario = mysqli_fetch_assoc($resultadoLogin); 
+            //REVISAR SI EL PASS ES CORECTO
+            $auth = password_verify($password, $usuario['password']);
 
+
+            if($auth){
+                //autenticar usuario
+                session_start();
+                //llenavdo arreglo de sesion
+                $_SESSION['usuario'] =  $usuario['email'];
+                $_SESSION['login'] = TRUE;
+
+                header('Location /admin');
+
+
+            } else{
+                $errores[] = 'password incorrecto, intente nuevamente';
+            }
+    
         }else {
             $errores[] = 'el Email ingresado es inexistente, porfavos ingrese un email';
 

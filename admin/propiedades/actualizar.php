@@ -1,4 +1,12 @@
 <?php
+session_start();
+$auth = $_SESSION['login'];
+
+if(!$auth){
+  header('location:/');
+}
+
+
    //validando ID
    $propiedadId = $_GET['id'];
    $propiedadId= filter_var($propiedadId, FILTER_VALIDATE_INT);
