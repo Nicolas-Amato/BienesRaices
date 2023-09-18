@@ -17,6 +17,20 @@
     if(!$password){
         $errores[] = 'Tu password es obligatorio';
     }
+
+    if(empty($errores)){
+        $query = "SELECT * FROM usuarios WHERE id = {$email}";
+        $resultadoLogin = mysqli_query($DB, $query);
+
+        if($resultadoLogin ->num_rows){
+
+        }else {
+            $errores[] = 'el Email ingresado es inexistente, porfavos ingrese un email';
+
+        }
+
+
+    }
   }
 
    //incluye header
