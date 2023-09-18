@@ -1,15 +1,12 @@
 <?php
-
+ //conexion con base de datos
    require 'includes/config/database.php';
    $DB = conectar_DB();
 
    $errores = [];
   
   if($_SERVER['REQUEST_METHOD']  === 'POST' ){
-    echo "<pre>";
-    var_dump($_POST);
-    echo "</pre>";
-
+   
     $email = mysqli_real_escape_string($DB, filter_var($_POST['email'], FILTER_VALIDATE_EMAIL));
     $password = mysqli_real_escape_string($DB, $_POST['password']);
 
@@ -20,16 +17,9 @@
     if(!$password){
         $errores[] = 'Tu password es obligatorio';
     }
-
-    echo "<pre>";
-    var_dump($errores);
-    echo "</pre>";
   }
 
-
-
-
-
+   //incluye header
    require 'includes/funciones.php';   
    incluirTemplate('header');
    
@@ -38,6 +28,11 @@
 
 <main class="contenedor seccion">
     <h1> Iniciar Sesion </h1>
+    <?php foreach($errores as $error):?>
+        <div class="alerta error">
+            <?php echo $error ?>
+        </div>
+    <?php endforeach; ?>
 
     <form method="POST" class="formulario">
         <fieldset>
