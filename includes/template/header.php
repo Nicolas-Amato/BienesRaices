@@ -3,6 +3,8 @@ if(!isset($_SESSION)){
     session_start();    
 }
 
+$auht = $_SESSION['login'] ?? FALSE;
+
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +37,10 @@ if(!isset($_SESSION)){
                         <a href="anuncios.php">Anuncios</a>
                         <a href="blog.php">Blog</a>
                         <a href="contacto.php">Contacto</a>
-                        <a href="login.php">Logout</a>
+                        <?php if($auht): ?>
+                            <a href="cerrar-sesion.php">logout</a> 
+                        <?php endif; ?>
+
                     </nav>
                 </div>
 
