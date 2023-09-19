@@ -1,9 +1,10 @@
 <?php
-session_start();
-$auth = $_SESSION['login'];
+require '../../includes/funciones.php';
+$auth = estaAutenticado();
+
 
 if(!$auth){
-  header('location:/');
+  header('location: ../../login.php');
 }
 
 
@@ -112,10 +113,9 @@ if(!$auth){
     }    
   } 
   
-  require '../../includes/funciones.php';   
+    
   incluirTemplate('header');
-
-        
+         
 ?>
 
     <main class="contenedor seccion">

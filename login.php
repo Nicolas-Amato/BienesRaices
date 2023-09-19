@@ -38,7 +38,7 @@
                 $_SESSION['usuario'] =  $usuario['email'];
                 $_SESSION['login'] = TRUE;
 
-                header('Location /admin');
+                header('Location: /BienesRaices/admin/index.php');
 
 
             } else{

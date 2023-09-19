@@ -1,4 +1,12 @@
 <?php
+
+require '../../includes/funciones.php';
+$auth = estaAutenticado();
+
+if(!$auth){
+  header('location: ../../login.php');
+}
+
   //importar coneccion desde base de datos
   require '../../includes/config/database.php';
   $DB = conectar_DB();
@@ -92,9 +100,8 @@
 
     }    
 } 
-  
-  require '../../includes/funciones.php';   
-  incluirTemplate('header');
+     
+incluirTemplate('header');
 
         
 ?>

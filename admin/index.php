@@ -1,13 +1,10 @@
 <?php
-session_start();
-$auth = $_SESSION['login'];
+require '../includes/funciones.php';
+$auth = estaAutenticado();
 
-  //echo "<pre>";
-  //var_dump($_SESSION);
-  //echo "</pre>";
   
 if(!$auth){
-    header('location:/');
+    header('location: /login.php');
 }
 
  //importar coneccion
@@ -48,8 +45,7 @@ if(!$auth){
     }
  }
 
- // incluye template
- require '../includes/funciones.php';   
+   
  incluirTemplate('header');
 ?>
 
